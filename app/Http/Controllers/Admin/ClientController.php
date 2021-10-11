@@ -336,7 +336,7 @@ class ClientController extends Controller
     {
 
         Client::find($id)->delete();
-        return redirect()->route('show-clients')->with('successes', 'تم حذف الطلب بنجاح');
+        return redirect()->route('show-clients')->with('successes', ['تمت حذف الطلب بنجاح']);
     }
 
 

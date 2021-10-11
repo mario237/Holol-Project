@@ -29,6 +29,15 @@
     </div>
 
 
+    @if ($errors->any())
+        <div class="alert alert-danger mb-0">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <div class="container-fluid">
 
@@ -544,7 +553,7 @@
                                         <label for="note" class="col-sm-12 col-form-label"> ملاحظات </label>
 
                                         <textarea type="text" class="form-control" id="note" placeholder="ادخل ملاحظات " name="note">
-
+                                            {{ old('note') }}
                                         </textarea>
                                     </div>
                                 </div>

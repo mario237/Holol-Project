@@ -36,6 +36,16 @@
     <!-- ============================================================== -->
 
 
+    @if ($errors->any())
+        <div class="alert alert-danger mb-0">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
 
     <div class="container-fluid">
 
@@ -639,13 +649,13 @@
                                         <textarea type="text" class="form-control" id="note" placeholder="ادخل ملاحظات "
                                                   name="note">
 
+                                            {{ old('note' , $client->note) }}
                                         </textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group  col-md-12">
                                     <div class="w-100 d-flex  ">
-                                        <button type="reset" class=" mx-2 btn btn-dark">مسح البيانات</button>
                                         <button type="submit" class="btn btn-primary">{{$helper['title']}}</button>
                                     </div>
                                 </div>
