@@ -70,7 +70,7 @@
                         <div class="d-flex align-items-center flex-row ">
                             <div class="display-7 text-white bg-primary2 p-4"><i class="mdi mdi-account"></i></div>
                             <div class="mx-auto">
-                                <h5 class="m-b-0 text-primary display-5 text-center">{{$statistic['estates']}}</h5>
+                                <h5 class="m-b-0 text-primary display-5 text-center">{{$statistic['employees']}}</h5>
                                 <h6 class="text-dark">  الموظفين </h6>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                         <div class="d-flex align-items-center flex-row ">
                             <div class="display-7 text-white bg-primary2 p-4"><i class="mdi mdi-table-edit"></i></div>
                             <div class="mx-auto">
-                                <h5 class="m-b-0 text-dark display-4 text-center">{{$statistic['programming_request']}}</h5>
+                                <h5 class="m-b-0 text-primary display-5 text-center">{{$statistic['programming_request']}}</h5>
                                 <h6 class="text-dark"> طلبات البرمجية</h6>
                             </div>
                         </div>
@@ -106,19 +106,21 @@
             </a>
 
 
-            <a class="col-md-3 col-sm-6" href="{{url('dashboard/orders/financial')}}">
+            <a class="col-md-3 col-sm-6" href="{{url('dashboard/clients')}}">
                 <div class="card">
                     <div class="card-body p-0">
                         <div class="d-flex align-items-center flex-row ">
                             <div class="display-7 text-white bg-primary2 p-4"><i class="mdi mdi-table-edit"></i></div>
                             <div class="mx-auto">
-                                <h5 class="m-b-0 text-primary display-5 text-center">{{$statistic['financial_request']}}</h5>
+                                <h5 class="m-b-0 text-primary display-5 text-center">{{$statistic['clients']}}</h5>
                                 <h6 class="text-dark"> طلبات التمويل </h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </a>
+
+
             <a class="col-md-3 col-sm-6" href="{{url('dashboard/orders/financial')}}">
                 <div class="card">
                     <div class="card-body p-0">
@@ -132,6 +134,8 @@
                     </div>
                 </div>
             </a>
+
+
             <a class="col-md-3 col-sm-6" href="{{url('dashboard/regions')}}">
                 <div class="card">
                     <div class="card-body p-0">
@@ -166,7 +170,7 @@
                         <div class="d-flex align-items-center flex-row ">
                             <div class="display-7 text-white bg-primary2 p-4"><i class="mdi mdi-hospital-building"></i></div>
                             <div class="mx-auto">
-                                <h5 class="m-b-0 text-primary display-5 text-center">{{$statistic['estates']}}</h5>
+                                <h5 class="m-b-0 text-primary display-5 text-center">{{$statistic['banks']}}</h5>
                                 <h6 class="text-dark"> البنوك  </h6>
                             </div>
                         </div>

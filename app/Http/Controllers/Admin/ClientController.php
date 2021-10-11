@@ -46,10 +46,11 @@ class ClientController extends Controller
         $client = new Client();
 
         $users = User::all()->where('id', '!=', '1');
-        $statuses = Status::all();
+        $statuses = ClientStatus::all();
         $employees = Employee::all();
         $banks = Bank::all();
-        $job_types = Job::all();
+        $jobs = $this->getJobs();
+        $job_types = $this->getJobTypes();
 
         return view('admin.clients.client-create')->with([
             'item' => $client,
@@ -58,6 +59,7 @@ class ClientController extends Controller
             'statuses' => $statuses,
             'employees' => $employees,
             'banks' => $banks,
+            'jobs'=>$jobs,
             'job_types' => $job_types
         ]);
     }
@@ -146,7 +148,6 @@ class ClientController extends Controller
             'job_type' => $request->job_type,
             'mobile' => $request->mobile,
             'support' => $request->support,
-            'note' => ($request->note) ?: '',
             'reg_date' => $request->reg_date,
             'salary' => $request->salary,
             'total_salary' => $request->total_salary,
@@ -162,6 +163,9 @@ class ClientController extends Controller
             'after_installment' => $request->after_installment,
             'duration' => $request->duration,
             'phase' => $request->phase,
+            'note' => ($request->note) ?: '',
+            'refuse_reson' => ($request->refuse_reson) ?: '',
+
 
             'identity' => $this->setImageName($request->file('identity')),
             'family_identity' => $this->setImageName($request->file('family_identity')),
@@ -285,7 +289,6 @@ class ClientController extends Controller
             'job_type' => $request->job_type,
             'mobile' => $request->mobile,
             'support' => $request->support,
-            'note' => ($request->note) ?: '',
             'reg_date' => $request->reg_date,
             'salary' => $request->salary,
             'total_salary' => $request->total_salary,
@@ -301,6 +304,8 @@ class ClientController extends Controller
             'after_installment' => $request->after_installment,
             'duration' => $request->duration,
             'phase' => $request->phase,
+            'note' => ($request->note) ?: '',
+            'refuse_reson' => ($request->refuse_reson) ?: '',
 
             'identity' => ($request->identity) ? $this->setImageName($request->file('identity')) : $client->identity,
             'family_identity' => ($request->family_identity) ? $this->setImageName($request->file('family_identity')) : $client->family_identity,

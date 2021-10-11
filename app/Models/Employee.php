@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static find($users_id)
+ * @method static count()
  */
 class Employee extends Model
 {

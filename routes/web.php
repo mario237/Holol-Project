@@ -173,8 +173,9 @@ Route::prefix('dashboard')->group(function () {
         Route::put('/sliders/{id}', 'Admin\SliderController@update');
         Route::delete('/sliders/{id}', 'Admin\SliderController@destroy');
 
-        Route::get('/clients', [ClientController::class , 'index'])->name('show-clients');
 
+        //Clients Routes
+        Route::get('/clients', [ClientController::class , 'index'])->name('show-clients');
 
         Route::get('/clients/create', [ClientController::class , 'create'])->name('create-client');
         Route::post('/clients', [ClientController::class , 'store'])->name('store-client');
@@ -187,6 +188,7 @@ Route::prefix('dashboard')->group(function () {
 
         Route::delete('/clients/delete/{id}', [ClientController::class , 'destroy']);
 
+        //End Clients Routes
 
         Route::post('/orders/financial/report', 'Admin\FRequestsController@sendReport');
     });

@@ -50,9 +50,9 @@
                 </li>
                 @endif
 
-                @if(in_array(\Illuminate\Support\Facades\Auth::user()->type,['2','4']) )
-                <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('dashboard/orders/financial')}}" aria-expanded="false"><i class="mdi mdi-table-edit"></i><span class="hide-menu">طلبات التمويل</span></a></li>
-                @endif
+{{--                @if(in_array(\Illuminate\Support\Facades\Auth::user()->type,['2','4']) )--}}
+{{--                <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('dashboard/orders/financial')}}" aria-expanded="false"><i class="mdi mdi-table-edit"></i><span class="hide-menu">طلبات التمويل</span></a></li>--}}
+{{--                @endif--}}
                 @if(in_array(\Illuminate\Support\Facades\Auth::user()->type,['3','4']) )
                 <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('dashboard/orders/programming')}}" aria-expanded="false"><i class="mdi mdi-table-edit"></i><span class="hide-menu">طلبات البرمجية</span></a>
                 </li>

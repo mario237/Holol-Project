@@ -90,10 +90,7 @@ $lang=app()->getLocale()
                                     <th scope="col">الايميل</th>
                                     <th scope="col">تاريخ الميلاد</th>
                                     <th scope="col">النوع</th>
-                                    <th scope="col">الادارة</th>
                                     <th scope="col">الاسم الوظيفي</th>
-                                    <th scope="col">الرقم الوظيفي</th>
-                                    <th scope="col">الكود المرجعي</th>
                                     <th scope="col">طلبات التمويل</th>
                                     <th scope="col">الادوات</th>
                                 </tr>
@@ -120,10 +117,7 @@ $lang=app()->getLocale()
                                     <td>
                                         <span class="bg-dark p-1 text-white"> {{$type}}</span>
                                     </td>
-                                    <td>{{($user->management)?$user->management->name:''}}</td>
                                     <td>{{($user->job_title)?$user->job_title:'-'}}</td>
-                                    <td>{{($user->job_id)?$user->job_id:'-'}}</td>
-                                    <td>{{($user->serial_no)?$user->serial_no:'-'}}</td>
                                     <td>
                                         <a href="{{url('dashboard/clients?user_id='.$user->id)}}">
                                             {{$user->clients->count()}}

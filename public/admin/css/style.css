@@ -14895,3 +14895,16 @@ input{
     color: #ffc400 !important;
     font-weight: bold;
 }
+
+
+.bg-red {
+    background-color: #ff3d00 !important;
+    color: white;
+    font-weight: bold;
+}
+
+.bg-green {
+    background-color: #357a38 !important;
+    color: white;
+    font-weight: bold;
+}

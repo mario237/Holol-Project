@@ -86,6 +86,7 @@
 
                                     <div class="col-sm-12">
                                         <label for="status" class="col-sm-12 col-form-label">الحالة</label>
+
                                         <select name="status" id="status"
                                                 class="form-control {{ $errors->get('status') ? 'is-invalid' : '' }}">
                                             @foreach($statuses as $status)
@@ -187,7 +188,7 @@
                                 {{-- Job Types--}}
 
                                 @php
-                                @endphp
+                                    @endphp
                                 <div class="form-group col-md-6 col-lg-4" id="type_container">
                                     <div class="col-sm-12">
                                         <label for="job_type" class="col-form-label col-sm-12">الرتبة</label>
@@ -550,7 +551,8 @@
                                                class="form-control {{ $errors->get('family_identity') ? 'is-invalid' : '' }}"
                                                value="{{ old('family_identity' , $client->family_identity) }}"
                                         />
-                                        <a class="d-inline-block" target="_blank" href="{{ asset($client->family_identity) }}">
+                                        <a class="d-inline-block" target="_blank"
+                                           href="{{ asset($client->family_identity) }}">
                                             اضغط هنا لفتح الملف
                                         </a>
                                     </div>
@@ -562,12 +564,14 @@
 
                                     <div class="col-sm-12">
 
-                                        <label for="salary_identity" class="col-sm-12 col-form-label">تعريف بالراتب</label>
+                                        <label for="salary_identity" class="col-sm-12 col-form-label">تعريف
+                                            بالراتب</label>
 
                                         <input type="file" id="salary_identity" name="salary_identity"
                                                class="form-control {{ $errors->get('salary_identity') ? 'is-invalid' : '' }}"/>
 
-                                        <a class="d-inline-block" target="_blank" href="{{ asset($client->salary_identity) }}">
+                                        <a class="d-inline-block" target="_blank"
+                                           href="{{ asset($client->salary_identity) }}">
                                             اضغط هنا لفتح الملف
                                         </a>
 
@@ -585,7 +589,8 @@
                                         <input type="file" id="instrument" name="instrument"
                                                class="form-control {{ $errors->get('instrument') ? 'is-invalid' : '' }}"/>
 
-                                        <a class="d-inline-block" target="_blank" href="{{ asset($client->instrument) }}">
+                                        <a class="d-inline-block" target="_blank"
+                                           href="{{ asset($client->instrument) }}">
                                             اضغط هنا لفتح الملف
                                         </a>
 
@@ -597,12 +602,14 @@
                                 <div class="form-group col-md-6 col-lg-3">
 
                                     <div class="col-sm-12">
-                                        <label for="construction_license" class="col-sm-12 col-form-label">صورة رخصة البناء</label>
+                                        <label for="construction_license" class="col-sm-12 col-form-label">صورة رخصة
+                                            البناء</label>
 
                                         <input type="file" id="construction_license" name="construction_license"
                                                class="form-control {{ $errors->get('construction_license') ? 'is-invalid' : '' }}"/>
 
-                                        <a class="d-inline-block" target="_blank" href="{{ asset($client->construction_license) }}">
+                                        <a class="d-inline-block" target="_blank"
+                                           href="{{ asset($client->construction_license) }}">
                                             اضغط هنا لفتح الملف
                                         </a>
                                     </div>
@@ -613,12 +620,14 @@
                                 <div class="form-group col-md-6 col-lg-3">
 
                                     <div class="col-sm-12">
-                                        <label for="owner_identity" class="col-sm-12 col-form-label">صورة هوية المالك</label>
+                                        <label for="owner_identity" class="col-sm-12 col-form-label">صورة هوية
+                                            المالك</label>
 
                                         <input type="file" id="owner_identity" name="owner_identity"
                                                class="form-control {{ $errors->get('owner_identity') ? 'is-invalid' : '' }}"/>
 
-                                        <a class="d-inline-block" target="_blank" href="{{ asset($client->owner_identity) }}">
+                                        <a class="d-inline-block" target="_blank"
+                                           href="{{ asset($client->owner_identity) }}">
                                             اضغط هنا لفتح الملف
                                         </a>
                                     </div>
@@ -629,17 +638,32 @@
                                 <div class="form-group col-md-6 col-lg-3">
 
                                     <div class="col-sm-12">
-                                        <label for="account_statement" class="col-sm-12 col-form-label">كشف حساب اخر 3 شهور مختوم من البنك</label>
+                                        <label for="account_statement" class="col-sm-12 col-form-label">كشف حساب اخر 3
+                                            شهور مختوم من البنك</label>
 
                                         <input type="file" id="account_statement" name="account_statement"
                                                class="form-control {{ $errors->get('account_statement') ? 'is-invalid' : '' }}"/>
 
 
-                                        <a class="d-inline-block" target="_blank" href="{{ asset($client->account_statement) }}">
+                                        <a class="d-inline-block" target="_blank"
+                                           href="{{ asset($client->account_statement) }}">
                                             اضغط هنا لفتح الملف
                                         </a>
                                     </div>
 
+                                </div>
+
+
+                                <div class="form-group col-md-12" id="refuse_reson_container">
+                                    <div class="col-sm-12">
+                                        <label for="refuse_reson" class="col-sm-12 col-form-label"> سبب رفض
+                                            الطلب </label>
+
+                                        <textarea type="text" class="form-control" id="refuse_reson"
+                                                  placeholder="ادخل السبب " name="refuse_reson">
+                                            {{ old('refuse_reson' , $client->refuse_reson) }}
+                                        </textarea>
+                                    </div>
                                 </div>
 
                                 <div class="form-group col-md-12">
@@ -676,24 +700,41 @@
 @section('page_scripts')
     <script>
 
-        $( document ).ready(function() {
-          const jobValue = $('#job').val();
-           if (jobValue === 'عسكري')
-             $('#type_container').removeClass("d-none");
-           else{
-               $('#type_container').addClass("d-none");
-           }   $('input[name=job_type]').val("");
 
-        });
+        const statusSelect = $('#status');
+        const job = $('#job');
 
-        $('#job').on('change', function () {
-            if ($(this).val() === 'عسكري') {
+        function checkClientStatus() {
+
+            if (statusSelect.val() === '2') {
+                $('#refuse_reson_container').removeClass("d-none");
+            } else {
+                $('#refuse_reson_container').addClass("d-none");
+                $('textarea[name=refuse_reson]').val("");
+            }
+        }
+
+        function changeJobTypeState() {
+            if (job.val() === 'عسكري') {
                 $('#type_container').removeClass("d-none");
 
             } else {
                 $('#type_container').addClass("d-none");
                 $('input[name=job_type]').val("");
             }
+        }
+
+        $(document).ready(function () {
+            checkClientStatus()
+            changeJobTypeState()
+        })
+
+        statusSelect.on('change', function () {
+            checkClientStatus();
+        })
+
+        job.on('change', function () {
+            changeJobTypeState()
         });
     </script>
 @endsection
