@@ -370,7 +370,8 @@
                             <div class="col-md-6 col-lg-4 my-3">
                                 <div class="col-sm-12">
                                     <h4>صورة الهوية</h4>
-                                    <img class="w-100" src="{{ asset($client->identity) }}" alt="صورة الهوية">
+
+                                    <a class="d-inline-block" target="_blank" href="{{ url($client->identity) }}">اضغط هنا لفتح الملف</a>
                                 </div>
                             </div>
 
@@ -378,7 +379,7 @@
                             <div class="col-md-6 col-lg-4 my-3">
                                 <div class="col-sm-12">
                                     <h4>صورة بطاقة العائلة</h4>
-                                    <img class="w-100" src="{{ asset($client->family_identity) }}" alt="صورة بطاقة العائلة">
+                                    <a class="d-inline-block" target="_blank" href="{{ url($client->family_identity) }}">اضغط هنا لفتح الملف</a>
                                 </div>
                             </div>
 
@@ -387,7 +388,7 @@
                             <div class="col-md-6 col-lg-4 my-3">
                                 <div class="col-sm-12">
                                     <h4>تعريف بالراتب</h4>
-                                    <img class="w-100" src="{{ asset($client->salary_identity) }}" alt="تعريف بالراتب">
+                                    <a class="d-inline-block" target="_blank" href="{{ url($client->salary_identity) }}">اضغط هنا لفتح الملف</a>
                                 </div>
                             </div>
 
@@ -395,7 +396,7 @@
                             <div class="col-md-6 col-lg-4 my-3">
                                 <div class="col-sm-12">
                                     <h4>صورة الصك</h4>
-                                    <img class="w-100" src="{{ asset($client->instrument) }}" alt="صورة الصك">
+                                    <a class="d-inline-block" target="_blank" href="{{ url($client->instrument) }}">اضغط هنا لفتح الملف</a>
                                 </div>
                             </div>
 
@@ -403,7 +404,7 @@
                             <div class="col-md-6 col-lg-4 my-3">
                                 <div class="col-sm-12">
                                     <h4>صورة رخصة البناء</h4>
-                                    <img class="w-100" src="{{ asset($client->construction_license) }}" alt="صورة  رخصة البناء">
+                                    <a class="d-inline-block" target="_blank" href="{{ url($client->construction_license) }}">اضغط هنا لفتح الملف</a>
                                 </div>
                             </div>
 
@@ -411,7 +412,7 @@
                             <div class="col-md-6 col-lg-4 my-3">
                                 <div class="col-sm-12">
                                     <h4>صورة هوية المالك</h4>
-                                    <img class="w-100" src="{{ asset($client->owner_identity) }}" alt="صورة  هوية المالك">
+                                    <a class="d-inline-block" target="_blank" href="{{ url($client->owner_identity) }}">اضغط هنا لفتح الملف</a>
                                 </div>
                             </div>
 
@@ -419,9 +420,12 @@
                             <div class="col-md-6 col-lg-4 my-3">
                                 <div class="col-sm-12">
                                     <h4>كشف حساب اخر 3 شهور مختوم من البنك</h4>
-                                    <img class="w-100" src="{{ asset($client->account_statement) }}" alt="كشف حساب اخر 3 شهور مختوم من البنك">
+                                    <a class="d-inline-block" target="_blank" href="{{ url($client->account_statement) }}">اضغط هنا لفتح الملف</a>
                                 </div>
                             </div>
+
+
+
 
 
                             {{-- End Images Preview--}}

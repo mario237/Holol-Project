@@ -451,102 +451,20 @@
                                 {{--  Images Upload --}}
 
 
-                                <div class="form-group col-md-6 col-lg-3">
-
-                                    <div class="col-sm-12">
-                                        <label for="identity" class="col-sm-12 col-form-label">صورة الهوية</label>
-
-                                        <input type="file" id="identity" name="identity"
-                                               class="form-control {{ $errors->get('identity') ? 'is-invalid' : '' }}"
-                                               value="{{ old('identity') }}"
-                                        />
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="form-group col-md-6 col-lg-3">
-
-                                    <div class="col-sm-12">
-                                        <label for="family_identity" class="col-sm-12 col-form-label">صورة بطاقة العائلة</label>
-
-                                        <input type="file" id="family_identity" name="family_identity"
-                                               class="form-control {{ $errors->get('family_identity') ? 'is-invalid' : '' }}"/>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="form-group col-md-6 col-lg-3">
-
-                                    <div class="col-sm-12">
-
-                                        <label for="salary_identity" class="col-sm-12 col-form-label">تعريف بالراتب</label>
-
-                                        <input type="file" id="salary_identity" name="salary_identity"
-                                               class="form-control {{ $errors->get('salary_identity') ? 'is-invalid' : '' }}"/>
-
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="form-group col-md-6 col-lg-3">
-
-                                    <div class="col-sm-12">
-
-                                        <label for="instrument" class="col-sm-12 col-form-label">صورة الصك</label>
-
-                                        <input type="file" id="instrument" name="instrument"
-                                               class="form-control {{ $errors->get('instrument') ? 'is-invalid' : '' }}"/>
-
-
-                                    </div>
-
-                                </div>
+                                <livewire:file-uploader name="identity" title="صورة الهوية" :item="$item" />
+                                <livewire:file-uploader name="family_identity" title="صورة بطاقة العائلة" :item="$item" />
+                                <livewire:file-uploader name="salary_identity" title="تعريف بالراتب" :item="$item" />
+                                <livewire:file-uploader name="instrument" title="صورة الصك" :item="$item" />
+                                <livewire:file-uploader name="construction_license" title="صورة رخصة البناء" :item="$item" />
+                                <livewire:file-uploader name="owner_identity" title="صورة هوية المالك" :item="$item" />
+                                <livewire:multiple-file-uploader name="account_statement" title="كشف حساب اخر 3 شهور مختوم من البنك" :item="$item" />
 
 
 
-
-                                <div class="form-group col-md-6 col-lg-3">
-
-                                    <div class="col-sm-12">
-                                        <label for="construction_license" class="col-sm-12 col-form-label">صورة رخصة البناء</label>
-
-                                        <input type="file" id="construction_license" name="construction_license"
-                                               class="form-control {{ $errors->get('construction_license') ? 'is-invalid' : '' }}"/>
-
-                                    </div>
-
-                                </div>
+                                {{--  End Images Upload --}}
 
 
-                                <div class="form-group col-md-6 col-lg-3">
 
-                                    <div class="col-sm-12">
-                                        <label for="owner_identity" class="col-sm-12 col-form-label">صورة هوية المالك</label>
-
-                                        <input type="file" id="owner_identity" name="owner_identity"
-                                               class="form-control {{ $errors->get('owner_identity') ? 'is-invalid' : '' }}"/>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="form-group col-md-6 col-lg-3">
-
-                                    <div class="col-sm-12">
-                                        <label for="account_statement" class="col-sm-12 col-form-label">كشف حساب اخر 3 شهور مختوم من البنك</label>
-
-                                        <input type="file" id="account_statement" name="account_statement"
-                                               class="form-control {{ $errors->get('account_statement') ? 'is-invalid' : '' }}"/>
-
-                                    </div>
-
-                                </div>
 
                                 <div class="form-group col-md-12">
                                     <div class="col-sm-12">
@@ -579,6 +497,10 @@
 
 
 @section('page_scripts')
+
+
+
+
     <script>
         $('#job').on('change', function () {
             if ($(this).val() === 'عسكري') {

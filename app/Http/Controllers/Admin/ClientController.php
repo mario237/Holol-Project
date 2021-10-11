@@ -43,6 +43,8 @@ class ClientController extends Controller
             'title' => 'انشاء'
         );
 
+        $client = new Client();
+
         $users = User::all()->where('id', '!=', '1');
         $statuses = Status::all();
         $employees = Employee::all();
@@ -50,6 +52,7 @@ class ClientController extends Controller
         $job_types = Job::all();
 
         return view('admin.clients.client-create')->with([
+            'item' => $client,
             'helper' => $helper,
             'users' => $users,
             'statuses' => $statuses,
@@ -167,7 +170,6 @@ class ClientController extends Controller
             'instrument' => $this->setImageName($request->file('instrument')),
             'construction_license' => $this->setImageName($request->file('construction_license')),
             'owner_identity' => $this->setImageName($request->file('owner_identity')),
-
         ]);
 
 
