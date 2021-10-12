@@ -113,6 +113,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">العميل</th>
                                     <th scope="col">حالة الطلب</th>
+                                    <th scope="col">المراجعة</th>
                                     <th scope="col">موظف البنك</th>
                                     <th scope="col">البنك</th>
                                     <th scope="col">الدعم</th>
@@ -132,6 +133,17 @@
                                         <td class="text-{{ \App\ClientStatus::find($client->status)->color  }}">
                                             {{ \App\ClientStatus::find($client->status)->title }}
                                         </td>
+
+
+                                        @foreach($phases as $phase)
+                                            @if($phase['id'] == $client->phase)
+                                             <td>{{ $phase['title'] }}</td>
+                                            @endif
+{{--                                            <option value="{{$phase['id']}}">{{$phase['title']}}</option>--}}
+                                        @endforeach
+
+
+
                                         <td>{{ \App\Models\Employee::find($client->users_id)->name }}</td>
                                         <td>{{ $client->bank }}</td>
                                         <td>{{ ($client->support == 0) ? 'لا' : 'نعم' }}</td>

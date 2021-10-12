@@ -503,18 +503,23 @@
                                 {{-- phase--}}
 
 
+
+
                                 <div class="form-group col-md-6 col-lg-4 ">
                                     <div class="col-sm-12">
                                         <label for="phase" class="col-sm-12 col-form-label">المرحلة</label>
                                         <select name="phase" id="phase"
                                                 class="form-control {{ $errors->get('phase') ? 'is-invalid' : '' }}">
-                                            @foreach(trans('phases') as $key => $value)
+                                            @foreach($phases as $phase)
                                                 <option
-                                                    value="{{$key}}" {{($client->phase == $key)?'selected':''}}>{{$value}}</option>
+                                                    value="{{$phase['id']}}" {{($client->phase == $phase['id'])?'selected':''}}>
+                                                    {{$phase['title']}}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+
 
                                 {{-- end phase--}}
 

@@ -484,8 +484,8 @@
                                         <label for="phase" class="col-sm-12 col-form-label">المرحلة</label>
                                         <select name="phase" id="phase"
                                                 class="form-control {{ $errors->get('phase') ? 'is-invalid' : '' }}">
-                                            @foreach(trans('phases') as $key => $value)
-                                                <option value="{{$key}}">{{$value}}</option>
+                                            @foreach($phases as $phase)
+                                                <option value="{{$phase['id']}}">{{$phase['title']}}</option>
                                             @endforeach
                                         </select>
                                     </div>

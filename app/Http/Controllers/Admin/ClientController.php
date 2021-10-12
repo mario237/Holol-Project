@@ -29,8 +29,12 @@ class ClientController extends Controller
     {
 
         $clients = Client::all();
+        $phases = $this->getPhases();
 
-        return view('admin.clients.all-clients')->with(['clients' => $clients]);
+        return view('admin.clients.all-clients')->with([
+            'clients' => $clients,
+            'phases' => $phases
+        ]);
     }
 
 
@@ -51,6 +55,7 @@ class ClientController extends Controller
         $banks = Bank::all();
         $jobs = $this->getJobs();
         $job_types = $this->getJobTypes();
+        $phases = $this->getPhases();
 
         return view('admin.clients.client-create')->with([
             'item' => $client,
@@ -59,8 +64,9 @@ class ClientController extends Controller
             'statuses' => $statuses,
             'employees' => $employees,
             'banks' => $banks,
-            'jobs'=>$jobs,
-            'job_types' => $job_types
+            'jobs' => $jobs,
+            'job_types' => $job_types,
+            'phases'=> $phases
         ]);
     }
 
@@ -206,6 +212,8 @@ class ClientController extends Controller
 
         $job_types = $this->getJobTypes();
 
+        $phases = $this->getPhases();
+
 
         return view('admin.clients.client-edit')->with([
             'client' => $client,
@@ -214,9 +222,11 @@ class ClientController extends Controller
             'statuses' => $statuses,
             'employees' => $employees,
             'banks' => $banks,
-            'jobs'=>$jobs,
+            'jobs' => $jobs,
             'job_types' => $job_types,
-            'supports' => $supports
+            'supports' => $supports,
+            'phases'=> $phases
+
         ]);
     }
 
@@ -275,7 +285,6 @@ class ClientController extends Controller
         $client = Client::find($id);
 
 
-
         Client::whereId($id)->update([
             'fullname' => User::find($request->user_id)->name,
             'status' => $request->status,
@@ -332,8 +341,8 @@ class ClientController extends Controller
         return view('admin.clients.show-client')->with([
             'client' => $client,
             'status' => $status,
-            'employee'=>$employee,
-            'supports'=>$supports
+            'employee' => $employee,
+            'supports' => $supports
 
         ]);
     }
@@ -375,17 +384,40 @@ class ClientController extends Controller
     private function getJobTypes(): array
     {
         return
-            ['جندي','جندي أول',' عريق','وكيل رقيب','رقيب','رقيب اول','رئيس رقباء','ملازم',
-                'ملازم أول','نقيب','رائد','مقدم','عقيد','عميد','لواء','فريق','فريق أول','متقاعد'];
+            ['جندي', 'جندي أول', ' عريق', 'وكيل رقيب', 'رقيب', 'رقيب اول', 'رئيس رقباء', 'ملازم',
+                'ملازم أول', 'نقيب', 'رائد', 'مقدم', 'عقيد', 'عميد', 'لواء', 'فريق', 'فريق أول', 'متقاعد'];
 
     }
 
-    private function getJobs(): array{
+    private function getJobs(): array
+    {
         return [
             'عسكري',
             'مدني حكومي',
             'قطاع خاص'
         ];
+    }
+
+
+    private function getPhases(): Collection
+    {
+        $phase_id = [0 => '0', 1 => '1', 2 => '2', 3 => '3', 4 => '4' , 5 => '5' , 6=> '6'];
+        $phase_title = [
+            0 => 'إنشاء طلب',
+            1 => 'التحقق من البيانات',
+            2 => 'الموافقة المبدئية',
+            3 => 'ترحيل الطلب للتقييم العقاري',
+            4 => 'الإستحقاق و توقيع العقد',
+            5 => 'الافراغ',
+            6 => 'الانتهاء',
+            ];
+
+        return collect($phase_id)->zip($phase_title)->transform(function ($values) {
+            return [
+                'id' => $values[0],
+                'title' => $values[1],
+            ];
+        });
     }
 }
 
