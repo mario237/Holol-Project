@@ -240,15 +240,15 @@
 
 @section('page_scripts')
 
-    <script>
+            <script>
 
 
-        const table = $('#clientsTable').DataTable();
+                const table = $('#consultsTable').DataTable();
 
-        $('#clientSearchInput').on('keyup', function () {
-            table.search(this.value).draw();
-        });
+                $('#clientSearchInput').on('keyup', function () {
+                    table.search(this.value).draw();
+                });
 
-    </script>
+            </script>
 
 @endsection

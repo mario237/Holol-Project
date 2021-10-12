@@ -283,9 +283,5 @@ class UserController extends Controller
 
         return view('admin.settings');
     }
-    public function consult()
-    {
 
-        return view('admin.consult');
-    }
 }

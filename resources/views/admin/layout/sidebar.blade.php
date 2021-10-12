@@ -40,7 +40,7 @@
                 <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('dashboard/users')}}" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">العملاء</span></a></li>
                 @endif
 
-                <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="https://www.management.zz.const-tech.biz/dashboard/consult" aria-expanded="false"><i class="mdi mdi-table-large"></i><span class="hide-menu">الإستفسارات</span></a></li>
+                <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('dashboard/consults') }}" aria-expanded="false"><i class="mdi mdi-table-large"></i><span class="hide-menu">الإستفسارات</span></a></li>
                 @if(in_array(\Illuminate\Support\Facades\Auth::user()->type,['1','2','3','4']) )
                 <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('dashboard/clients')}}" aria-expanded="false"><i class="mdi mdi-table-large"></i><span class="hide-menu"> طلبات التمويل</span></a></li>
                 @endif

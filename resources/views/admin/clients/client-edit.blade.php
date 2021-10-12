@@ -54,13 +54,14 @@
                 <div class="card">
                     <div class="card-body p-5">
 
-                        <form action="{{$helper['action']}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{$helper['action']}}" method="POST">
                             @csrf
                             @method($helper['method'])
 
                             <div class="row">
 
                                 {{-- client name --}}
+
 
                                 <div class="form-group col-md-6 col-lg-4 ">
                                     <div class="col-sm-12">

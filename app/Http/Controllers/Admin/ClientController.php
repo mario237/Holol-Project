@@ -199,7 +199,6 @@ class ClientController extends Controller
         );
 
 
-        $client = Client::find($id);
 
         $users = User::all()->where('id', '!=', '1');
         $statuses = ClientStatus::all();
@@ -351,7 +350,11 @@ class ClientController extends Controller
     public function destroy($id): RedirectResponse
     {
 
+
         Client::find($id)->delete();
+
+
+
         return redirect()->route('show-clients')->with('successes', ['تمت حذف الطلب بنجاح']);
     }
 

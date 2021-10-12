@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\ConsultsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -190,6 +191,27 @@ Route::prefix('dashboard')->group(function () {
 
         //End Clients Routes
 
+
+
+        //Consult Routing
+        Route::get('/consults', [ConsultsController::class , 'index'])->name('show-all-consults');
+
+        Route::get('/consults/create', [ConsultsController::class , 'create'])->name('create-consult');
+        Route::post('/consults', [ConsultsController::class , 'store'])->name('store-consult');
+
+
+        Route::get('/consults/{id}/edit', [ConsultsController::class , 'edit'])->name('edit-consult');
+        Route::put('/consults/update/{id}', [ConsultsController::class , 'update'])->name('update-consult');
+
+
+
+
+        Route::delete('/consults/delete/{id}', [ConsultsController::class , 'destroy'])->name('delete-consult');
+
+
+        //End Consult Routing
+
+
         Route::post('/orders/financial/report', 'Admin\FRequestsController@sendReport');
     });
 });
@@ -225,3 +247,7 @@ Route::get('/clear', function () {
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
