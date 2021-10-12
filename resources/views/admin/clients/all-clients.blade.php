@@ -9,6 +9,13 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
 
+
+<style>
+     input[type='search']  {
+        margin: 16px  !important;
+    }
+</style>
+
 @endsection
 
 
@@ -94,7 +101,7 @@
                             <div class="col-md-2 my-1">
                                 <button class="btn btn-primary btn-sm btn-filter m-auto d-block">عرض بيانات الطلبات
                                 </button>
-                            </div>
+
                         </div>
 
                     </div>
@@ -106,12 +113,13 @@
 
                     @else
 
-                        <div class="table-responsive table-hover mt-5">
-                            <table class="table">
+                        <div class="table-responsive table-hover mt-5 overflow-auto">
+                            <table id="clientsTable" class="table table-striped table-hover dt-responsive display nowrap">
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">العميل</th>
+                                    <th scope="col">رقم الجوال</th>
                                     <th scope="col">حالة الطلب</th>
                                     <th scope="col">المراجعة</th>
                                     <th scope="col">موظف البنك</th>
@@ -130,6 +138,8 @@
                                     <tr>
                                         <td>{{ $i }}</td>
                                         <td>{{ $client->fullname }}</td>
+                                        <td>{{ $client->mobile }}</td>
+
                                         <td class="text-{{ \App\ClientStatus::find($client->status)->color  }}">
                                             {{ \App\ClientStatus::find($client->status)->title }}
                                         </td>
@@ -137,11 +147,9 @@
 
                                         @foreach($phases as $phase)
                                             @if($phase['id'] == $client->phase)
-                                             <td>{{ $phase['title'] }}</td>
+                                                <td>{{ $phase['title'] }}</td>
                                             @endif
-{{--                                            <option value="{{$phase['id']}}">{{$phase['title']}}</option>--}}
                                         @endforeach
-
 
 
                                         <td>{{ \App\Models\Employee::find($client->users_id)->name }}</td>
@@ -230,4 +238,17 @@
 @endsection
 
 
+@section('page_scripts')
 
+    <script>
+
+
+        const table = $('#clientsTable').DataTable();
+
+        $('#clientSearchInput').on('keyup', function () {
+            table.search(this.value).draw();
+        });
+
+    </script>
+
+@endsection
