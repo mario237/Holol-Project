@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Client;
 use App\ClientFile;
+use App\ClientsListener;
 use App\ClientStatus;
 use App\Http\Controllers\Controller;
 use App\Job;
@@ -16,6 +17,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class ClientController extends Controller
@@ -30,6 +32,7 @@ class ClientController extends Controller
 
         $clients = Client::all();
         $phases = $this->getPhases();
+
 
         return view('admin.clients.all-clients')->with([
             'clients' => $clients,
@@ -66,7 +69,7 @@ class ClientController extends Controller
             'banks' => $banks,
             'jobs' => $jobs,
             'job_types' => $job_types,
-            'phases'=> $phases
+            'phases' => $phases
         ]);
     }
 
@@ -183,6 +186,7 @@ class ClientController extends Controller
         ]);
 
 
+
         return redirect()->route('show-clients')->with('successes', ['تمت الاضافة بنجاح']);
     }
 
@@ -197,7 +201,6 @@ class ClientController extends Controller
             'action' => route('update-client', ['id' => $id]),
             'title' => 'تعديل'
         );
-
 
 
         $users = User::all()->where('id', '!=', '1');
@@ -224,7 +227,7 @@ class ClientController extends Controller
             'jobs' => $jobs,
             'job_types' => $job_types,
             'supports' => $supports,
-            'phases'=> $phases
+            'phases' => $phases
 
         ]);
     }
@@ -354,7 +357,6 @@ class ClientController extends Controller
         Client::find($id)->delete();
 
 
-
         return redirect()->route('show-clients')->with('successes', ['تمت حذف الطلب بنجاح']);
     }
 
@@ -404,7 +406,7 @@ class ClientController extends Controller
 
     private function getPhases(): Collection
     {
-        $phase_id = [0 => '0', 1 => '1', 2 => '2', 3 => '3', 4 => '4' , 5 => '5' , 6=> '6'];
+        $phase_id = [0 => '0', 1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => '5', 6 => '6'];
         $phase_title = [
             0 => 'إنشاء طلب',
             1 => 'التحقق من البيانات',
@@ -413,7 +415,7 @@ class ClientController extends Controller
             4 => 'الإستحقاق و توقيع العقد',
             5 => 'الافراغ',
             6 => 'الانتهاء',
-            ];
+        ];
 
         return collect($phase_id)->zip($phase_title)->transform(function ($values) {
             return [

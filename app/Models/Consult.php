@@ -15,9 +15,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Consult extends Model
 {
 
-    protected $table = 'Consults';
+    protected $table = 'consults';
 
-    protected $primaryKey = 'Id';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'Name',

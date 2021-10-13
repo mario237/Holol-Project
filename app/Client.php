@@ -10,10 +10,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static whereId($id)
  * @method static find($id)
  * @method static count()
+ * @method static createOrUpdate(array $array)
  */
 class Client  extends Model
 {
     protected $table = 'clients';
+
+    protected $primaryKey = 'id';
 
     protected $hidden = [];
     protected $casts = [];
